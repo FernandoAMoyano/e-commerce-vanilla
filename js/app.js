@@ -65,13 +65,34 @@ document
   .querySelector(".cart__container")
   .addEventListener("click", (event) => {
     if (event.target.classList.contains("cart__remove")) {
+      /* Confirmar eliminación del producto */
       const productId = event.target
         .closest(".cart__item")
         .getAttribute("data-id");
 
-      removeFromCart(productId);
-      updateCartUi();
+      Swal.fire({
+        title: "¿Estás seguro?",
+        text: "Este producto será eliminado del carrito.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          removeFromCart(productId);
+          updateCartUi();
+
+          // Mostrar un mensaje de éxito
+          Toast.fire({
+            icon: "success",
+            title: "Producto eliminado del carrito",
+          });
+        }
+      });
     } else if (event.target.classList.contains("cart__increase")) {
+      /* Incrementrar la cantidad en 1 */
       const productId = event.target
         .closest(".cart__item")
         .getAttribute("data-id");
@@ -79,6 +100,7 @@ document
       increaseQuantity(productId);
       updateCartUi();
     } else if (event.target.classList.contains("cart__decrease")) {
+      /* Disminuir la cantidad en 1 */
       const productId = event.target
         .closest(".cart__item")
         .getAttribute("data-id");
