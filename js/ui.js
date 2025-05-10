@@ -98,3 +98,16 @@ export const updateCartUi = () => {
 
   totalPriceContainer.innerText = `Total: $${calculateTotalPrice()}`;
 };
+
+export const updateCartCount = () => {
+  const itemCountElement = document.querySelector(".cart__item-count");
+  const cartItems = getCartItems();
+  const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
+  if (totalItems > 0) {
+    itemCountElement.innerText = totalItems;
+    itemCountElement.style.display = "flex";
+  } else {
+    itemCountElement.style.display = "none";
+  }
+};

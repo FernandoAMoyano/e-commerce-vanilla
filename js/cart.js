@@ -1,3 +1,5 @@
+import { updateCartCount } from "./ui.js";
+
 let cartItems = [];
 
 export const createProduct = (id, title, price) => ({ id, title, price });
@@ -13,12 +15,14 @@ export const addToCart = (product, quantity) => {
   } else {
     cartItems.push({ ...product, quantity });
   }
+  updateCartCount();
 };
 
 export const increaseQuantity = (id) => {
   const product = cartItems.find((item) => item.id === id);
   if (product) {
     product.quantity += 1;
+    updateCartCount();
   }
 };
 
@@ -30,15 +34,15 @@ export const decreaseQuantity = (id) => {
     } else {
       removeFromCart(id);
     }
+    updateCartCount();
   }
 };
 
 export const removeFromCart = (id) => {
   cartItems = cartItems.filter((item) => item.id !== id);
+  updateCartCount();
 };
 
 export const calculateTotalPrice = () => {
   return cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 };
-
-export const updateCartCount = () => {};

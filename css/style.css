@@ -82,7 +82,7 @@ body {
 }
 
 .cart__sidebar--open {
-  right: 0; /* Se muestra cuando se añade la clase --open */
+  right: 0;
 }
 
 .cart__header {
@@ -107,7 +107,7 @@ body {
   border: none;
   background-color: transparent;
   color: rgb(0, 0, 0);
-  z-index: 1002; /* Asegúrate de que esté sobre otros elementos */
+  z-index: 1002;
 }
 
 .cart__container {
@@ -213,9 +213,9 @@ body {
 }
 
 .cart__item-count {
-  position: absolute; /* Posiciona el contador de manera absoluta dentro del contenedor */
-  top: 10px; /* Ajusta según sea necesario */
-  right: 10px; /* Ajusta según sea necesario */
+  position: absolute;
+  top: 10px;
+  right: 10px;
   background-color: red;
   color: white;
   border-radius: 50%;
