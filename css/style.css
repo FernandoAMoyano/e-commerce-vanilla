@@ -58,9 +58,12 @@ body {
   cursor: pointer;
   border-radius: 8px;
   border: none;
+  background: #424242;
+  color: #fff;
+  transition: background 0.2s;
 }
 .product__add:hover {
-  background-color: dimgrey;
+  background: #555;
   color: aliceblue;
 }
 /*=============================================
@@ -242,4 +245,64 @@ body {
 .cart__remove:hover {
   background-color: #555;
   color: white;
+}
+
+/*=============================================
+=                 Checkout                   =
+=============================================*/
+
+.centered-list {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 2rem 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.checkout__items {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.checkout__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: #f7f7f7;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.checkout__total {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  text-align: right;
+}
+
+.checkout__back {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  background: #424242; /* gris oscuro, igual que .cart__openButton */
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s;
+  margin-top: 1rem;
+  cursor: pointer;
+  border: none;
+}
+.checkout__back:hover {
+  background: #555; /* gris más claro al pasar el mouse */
 }

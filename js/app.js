@@ -4,6 +4,7 @@ import {
   decreaseQuantity,
   increaseQuantity,
   removeFromCart,
+  getCartItems,
 } from "./cart.js";
 import { renderProducts, updateCartUi } from "./ui.js";
 
@@ -109,3 +110,12 @@ document
       updateCartUi();
     }
   });
+
+// Evento para el botón Checkout
+document.querySelector(".cart__checkout").addEventListener("click", () => {
+  // Asegúrate de guardar el carrito actual en localStorage antes de copiarlo
+  localStorage.setItem("cart", JSON.stringify(getCartItems()));
+  const cartItems = JSON.stringify(getCartItems());
+  localStorage.setItem("checkoutCart", cartItems);
+  window.location.href = "checkout.html";
+});

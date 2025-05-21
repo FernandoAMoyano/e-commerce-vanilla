@@ -1,12 +1,17 @@
 import { updateCartCount } from "./ui.js";
 
-let cartItems = [];
+// Cargar carrito desde localStorage al iniciar
+let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
 export const createProduct = (id, title, price) => ({ id, title, price });
 
-export const getCartItems = () => {
-  return [...cartItems];
-};
+export function getCartItems() {
+  return cartItems;
+}
+
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cartItems));
+}
 
 export const addToCart = (product, quantity) => {
   const existsInTheCart = cartItems.find((item) => item.id === product.id);
@@ -15,6 +20,7 @@ export const addToCart = (product, quantity) => {
   } else {
     cartItems.push({ ...product, quantity });
   }
+  saveCart();
   updateCartCount();
 };
 
@@ -22,6 +28,7 @@ export const increaseQuantity = (id) => {
   const product = cartItems.find((item) => item.id === id);
   if (product) {
     product.quantity += 1;
+    saveCart();
     updateCartCount();
   }
 };
@@ -33,13 +40,16 @@ export const decreaseQuantity = (id) => {
       product.quantity -= 1;
     } else {
       removeFromCart(id);
+      return;
     }
+    saveCart();
     updateCartCount();
   }
 };
 
 export const removeFromCart = (id) => {
   cartItems = cartItems.filter((item) => item.id !== id);
+  saveCart();
   updateCartCount();
 };
 
