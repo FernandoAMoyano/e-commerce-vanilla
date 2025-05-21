@@ -87,7 +87,7 @@ export const renderCheckout = () => {
 
   if (!itemsContainer || !totalContainer) return;
 
-  itemsContainer.innerHTML = ""; // Limpiar antes de renderizar
+  itemsContainer.innerHTML = "";
 
   if (cart.length === 0) {
     itemsContainer.innerHTML = "<p>No hay productos en el carrito.</p>";

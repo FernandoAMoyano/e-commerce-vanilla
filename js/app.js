@@ -113,7 +113,6 @@ document
 
 // Evento para el botón Checkout
 document.querySelector(".cart__checkout").addEventListener("click", () => {
-  // Asegúrate de guardar el carrito actual en localStorage antes de copiarlo
   localStorage.setItem("cart", JSON.stringify(getCartItems()));
   const cartItems = JSON.stringify(getCartItems());
   localStorage.setItem("checkoutCart", cartItems);
