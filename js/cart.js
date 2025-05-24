@@ -5,14 +5,17 @@ let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
 export const createProduct = (id, title, price) => ({ id, title, price });
 
+/* Funcion que obtiene los elementos del local storage */
 export function getCartItems() {
   return cartItems;
 }
 
+/* Funcion que guarda el carrito en local storage */
 function saveCart() {
   localStorage.setItem("cart", JSON.stringify(cartItems));
 }
 
+/* Funcion para agregar un producto al carrito */
 export const addToCart = (product, quantity) => {
   const existsInTheCart = cartItems.find((item) => item.id === product.id);
   if (existsInTheCart) {
@@ -24,6 +27,7 @@ export const addToCart = (product, quantity) => {
   updateCartCount();
 };
 
+/* Funcion para incrementar la cantidad del producto */
 export const increaseQuantity = (id) => {
   const product = cartItems.find((item) => item.id === id);
   if (product) {
@@ -33,6 +37,7 @@ export const increaseQuantity = (id) => {
   }
 };
 
+/* Funcion para disminuir la cantidad del producto */
 export const decreaseQuantity = (id) => {
   const product = cartItems.find((item) => item.id === id);
   if (product) {
@@ -47,6 +52,7 @@ export const decreaseQuantity = (id) => {
   }
 };
 
+/* Funcion para eliminar el producto del carrito */
 export const removeFromCart = (id) => {
   cartItems = cartItems.filter((item) => item.id !== id);
   saveCart();
